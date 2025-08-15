@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Tech Portfolio Design System - Dark theme with gradient accents
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Dark theme base colors */
+    --background: 222 47% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Gradient primary colors */
+    --primary: 250 75% 60%;
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 270 100% 70%;
+
+    --secondary: 222 47% 12%;
+    --secondary-foreground: 210 40% 95%;
+
+    --muted: 222 47% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 190 100% 50%;
+    --accent-foreground: 222 47% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 47% 15%;
+    --input: 222 47% 12%;
+    --ring: 250 75% 60%;
+
+    --radius: 0.75rem;
+
+    /* Custom gradient and glow variables */
+    --gradient-primary: linear-gradient(135deg, hsl(250 75% 60%), hsl(270 100% 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(190 100% 50%), hsl(250 75% 60%));
+    --gradient-accent: linear-gradient(90deg, hsl(270 100% 70%), hsl(190 100% 50%));
+    --shadow-glow: 0 0 40px hsl(250 75% 60% / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(222 47% 5% / 0.5);
+    
+    /* Animation variables */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+/* Custom animations and utilities */
+@layer utilities {
+  .bg-gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .bg-gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .bg-gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+  
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @keyframes meshGlideSuperSlow {
+  /* tiny, linear pan to avoid any “speeding up” feel */
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-0.25%, -0.25%, 0) scale(1.003); }
+}
+
+.animate-mesh-glide-super-slow {
+  animation: meshGlideSuperSlow 360s linear infinite; /* 6 minutes per cycle */
+  will-change: transform;
+}
+
+/* Accessibility: if the user prefers reduced motion, stop it entirely */
+@media (prefers-reduced-motion: reduce) {
+  .animate-mesh-glide-super-slow { animation: none !important; }
+}
+
+
+}
